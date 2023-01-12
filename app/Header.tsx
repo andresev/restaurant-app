@@ -19,7 +19,9 @@ const Header = () => {
         <Link href="/">Home</Link>
         <Link href="/">Menu</Link>
         {/* <h1 className="text-2xl">Restaurant</h1> */}
-        <Image alt="wing-town-logo" className="w-72" src={logo} />
+        <Link href={'/'}>
+          <Image alt="wing-town-logo" className="w-72" src={logo} />
+        </Link>
         <Link href="/">About Us</Link>
         <Link href="/">Contact</Link>
       </div>

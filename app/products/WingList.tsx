@@ -21,11 +21,13 @@ const WingList = async () => {
         <Link href={`/products/${item._id}`}>
           <WingCard
             _id={item._id}
-            // key={item._id}
+            key={item._id}
             title={item.title}
             prices={item.prices}
+            flavors={item.flavors}
             description={item.description}
             img={item.img}
+            extraOptions={item.extraOptions}
           />
         </Link>
       ))}

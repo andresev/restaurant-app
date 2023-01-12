@@ -21,6 +21,10 @@ const ProductSchema = new Schema(
       type: [Number],
       required: true,
     },
+    flavors: {
+      type: [String],
+      require: true,
+    },
     extraOptions: {
       type: [
         {
