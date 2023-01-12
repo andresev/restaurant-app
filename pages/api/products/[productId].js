@@ -8,7 +8,7 @@ async function handler(req, res) {
     cookies,
   } = req;
 
-  dbConnect();
+  await dbConnect();
 
   if (method === 'GET') {
     try {

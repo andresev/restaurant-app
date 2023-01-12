@@ -1,3 +1,4 @@
+// 'use client';
 import React from 'react';
 import { Product } from '../../../typings';
 import Image from 'next/image';
@@ -21,12 +22,14 @@ async function getProduct(productId: string) {
 }
 
 const ProductPage = async ({ params: { productId } }: PageProps) => {
-  const handleChange = (e: any, option: any) => {
-    const checked = e.target.checked;
+  // const [sauce, setSauces] = useState(0);
 
-    if (checked) {
-    }
-  };
+  // const handleChange = (e: any, option: any) => {
+  //   const checked = e.target.checked;
+
+  //   if (checked) {
+  //   }
+  // };
   const product = await getProduct(productId);
   console.log(product);
   return (
@@ -53,17 +56,25 @@ const ProductPage = async ({ params: { productId } }: PageProps) => {
             <h3 className="text-2xl font-bold text-orange-500">
               Choose your flavor
             </h3>
-            <div className="flex flex-row justify-evenly w-[60%] ">
-              {product.flavors.map((flavor: string, index: number) => (
-                <span key={index} className="text-lg text-black">
-                  {flavor}
-                </span>
+            {/* <div className="flex flex-row justify-between w-[60%] ">
+              {product.flavors.map((flavor: any, index: number) => (
+                <div className="flex flex-row items-center">
+                  <input
+                    className="w-6 h-6 shadow rounded-md"
+                    type="checkbox"
+                    id={flavor.text}
+                    name={flavor.text}
+                  />
+                  <span key={index} className="text-lg text-black pl-2">
+                    {flavor.text}
+                  </span>
+                </div>
               ))}
-            </div>
+            </div> */}
           </div>
           <div>
             <h3 className="text-2xl font-bold text-orange-500">Add-ons</h3>
-            <div className="flex flex-row justify-evenly w-[60%]">
+            <div className="flex flex-row justify-between w-[60%]">
               {product.extraOptions.map((option: any, index: number) => (
                 <div key={index} className="flex flex-row items-center">
                   <input
@@ -74,10 +85,12 @@ const ProductPage = async ({ params: { productId } }: PageProps) => {
                     // onChange={(e) => handleChange(e, option)}
                   />
                   <div className="pl-3">
-                    <label className="pr-2 text-lg">{option.text}</label>
-                    <label className="text-xl">{`$${option.price.toFixed(
-                      2
-                    )}`}</label>
+                    <label className="pr-2 text-lg text-black">
+                      {option.text}
+                    </label>
+                    <label className="text-lg text-black">
+                      {`($${option.price.toFixed(2)})`}
+                    </label>
                   </div>
                 </div>
               ))}
