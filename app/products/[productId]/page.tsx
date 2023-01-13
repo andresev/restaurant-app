@@ -56,7 +56,7 @@ const ProductPage = async ({ params: { productId } }: PageProps) => {
             <h3 className="text-2xl font-bold text-orange-500">
               Choose your flavor
             </h3>
-            {/* <div className="flex flex-row justify-between w-[60%] ">
+            <div className="flex flex-row justify-between w-[60%] ">
               {product.flavors.map((flavor: any, index: number) => (
                 <div className="flex flex-row items-center">
                   <input
@@ -70,7 +70,7 @@ const ProductPage = async ({ params: { productId } }: PageProps) => {
                   </span>
                 </div>
               ))}
-            </div> */}
+            </div>
           </div>
           <div>
             <h3 className="text-2xl font-bold text-orange-500">Add-ons</h3>
