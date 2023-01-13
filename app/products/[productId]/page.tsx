@@ -33,48 +33,42 @@ const ProductPage = async ({ params: { productId } }: PageProps) => {
   const product = await getProduct(productId);
   console.log(product);
   return (
-    <div className="flex justify-center items-start w-screen h-screen p-16 bg-[#f8dcc9]">
-      <div className="flex flex-row justify-center p-5 ">
+    <div className="flex-1 bg-[#f8dcc9]">
+      <div className="">
+        <Image className="w-36 h-36 rounded-full" alt="wing-combo" src={img} />
         <div className="">
-          <Image
-            className="w-96 h-96 rounded-full"
-            alt="wing-combo"
-            src={img}
-          />
-        </div>
-        <div className="flex flex-col justify-between px-10">
-          <h3 className="text-4xl font-extrabold text-black">
-            {product.title}
-          </h3>
+          <h3 className="text-black">{product.title}</h3>
           <div>
-            <span className="text-2xl border-b-2 border-b-orange-500 text-orange-500">
-              {product.prices[0]}
-            </span>
+            <span className="">{product.prices[0]}</span>
           </div>
           <p className="w-[60%] text-lg text-black">{product.description}</p>
           <div>
             <h3 className="text-2xl font-bold text-orange-500">
-              Choose your flavor
+              Choose your flavor ({`${product.flavors[0].limit}`})
             </h3>
             <div className="flex flex-row justify-between w-[60%] ">
-              {product.flavors.map((flavor: any, index: number) => (
-                <div className="flex flex-row items-center">
-                  <input
-                    className="w-6 h-6 shadow rounded-md"
-                    type="checkbox"
-                    id={flavor.text}
-                    name={flavor.text}
-                  />
-                  <span key={index} className="text-lg text-black pl-2">
-                    {flavor.text}
-                  </span>
+              {product.flavors.map((items: any, index: number) => (
+                <div className="flex flex-col justify-between" key={index}>
+                  {items.text.map((flavor: string, index: number) => (
+                    <div key={index} className="flex flex-row items-center">
+                      <input
+                        className="w-6 h-6 shadow rounded-md"
+                        type="checkbox"
+                        id={flavor}
+                        name={flavor}
+                      />
+                      <span key={index} className="text-lg text-black pl-2">
+                        {flavor}
+                      </span>
+                    </div>
+                  ))}
                 </div>
               ))}
             </div>
           </div>
           <div>
-            <h3 className="text-2xl font-bold text-orange-500">Add-ons</h3>
-            <div className="flex flex-row justify-between w-[60%]">
+            <h3 className="text-xl font-bold text-orange-500">Add-ons</h3>
+            <div className="flex flex-row">
               {product.extraOptions.map((option: any, index: number) => (
                 <div key={index} className="flex flex-row items-center">
                   <input

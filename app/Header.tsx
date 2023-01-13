@@ -1,31 +1,42 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import logo from '../public/wing-town-logo.png';
-import { AiOutlineShoppingCart, AiOutlinePhone } from 'react-icons/ai';
+import {
+  AiOutlineShoppingCart,
+  AiOutlinePhone,
+  AiOutlineMenu,
+} from 'react-icons/ai';
+import MenuButton from './components/MenuButton';
 
 const Header = () => {
   return (
-    <header className="flex justify-between bg-[#d14525] h-24">
-      <div className="flex justify-start items-center pl-12 w-[20%] ">
-        <div className="p-1 bg-[#fff] rounded-3xl">
-          <AiOutlinePhone className="h-10 w-10 text-[#d14525]" />
-        </div>
-        <div className="ml-5">
-          <p className="text-sm">ORDER NOW!</p>
-          <p className="text-lg font-bold">956-754-7271</p>
+    <header className="flex justify-between bg-[#d14525] h-16">
+      <div className="flex justify-start items-center w-[20%]">
+        <MenuButton />
+        {/* <AiOutlineMenu className="w-8 h-8 text-white" /> */}
+        <div className="ml-2">
+          <p className="invisible">ORDER NOW!</p>
+          <p className="invisible">956-754-7271</p>
         </div>
       </div>
-      <div className="flex flex-row justify-evenly items-center w-[60%] bg-[#d14525]">
-        <Link href="/">Home</Link>
-        <Link href="/">Menu</Link>
-        {/* <h1 className="text-2xl">Restaurant</h1> */}
-        <Link href={'/'}>
-          <Image alt="wing-town-logo" className="w-72" src={logo} />
+      <div className="flex flex-row justify-center items-center w-[60%] bg-[#d14525]">
+        <Link className="invisible absolute disabled:opacity-0" href="/">
+          Home
         </Link>
-        <Link href="/">About Us</Link>
-        <Link href="/">Contact</Link>
+        <Link className="invisible absolute disabled:opacity-0" href="/">
+          Menu
+        </Link>
+        <Link href={'/'}>
+          <Image alt="wing-town-logo" className="h-103 w-40" src={logo} />
+        </Link>
+        <Link className="invisible absolute disabled:opacity-0" href="/">
+          About Us
+        </Link>
+        <Link className="invisible absolute disabled:opacity-0" href="/">
+          Contact
+        </Link>
       </div>
-      <div className="flex justify-end items-center w-[20%] pr-12">
+      <div className="flex justify-end items-center pr-5 w-[20%]">
         <AiOutlineShoppingCart className="h-8 w-8" />
       </div>
     </header>
