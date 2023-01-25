@@ -10,7 +10,7 @@ import MenuButton from './components/MenuButton';
 
 const Header = () => {
   return (
-    <header className="flex justify-between bg-[#d14525] h-16">
+    <header className="flex justify-between bg-[#d14525] h-20">
       <div className="flex justify-start items-center w-[20%]">
         <MenuButton />
         {/* <AiOutlineMenu className="w-8 h-8 text-white" /> */}

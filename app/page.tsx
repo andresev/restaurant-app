@@ -3,7 +3,7 @@ import Products from './products/page';
 
 function Page() {
   return (
-    <main className="">
+    <main className="bg-[#f8dcc9]">
       <Products />
     </main>
   );
