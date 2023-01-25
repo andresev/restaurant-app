@@ -1,7 +1,5 @@
 import './globals.css';
 import Header from './Header';
-import Menu from './components/Menu';
-import MenuButton from './components/MenuButton';
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (

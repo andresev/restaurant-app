@@ -8,11 +8,11 @@ const WingCard = (props: Product) => {
     <div className="flex flex-row items-center p-5">
       <Image alt="wing-combo" className="w-36 h-36 rounded-full" src={img} />
       <div className="flex flex-col justify-between p-4">
-        <h1 className=" text-xl font-bold">{props.title}</h1>
+        <h1 className=" text-xl font-bold text-orange-500">{props.title}</h1>
         <div>
-          <span className="text-lg font-thin border-b">{props.prices[0]}</span>
+          <span className="text-lg text-orange-500 font-thin border-b border-orange-500">{props.prices[0]}</span>
         </div>
-        <p className="text-sm pt-2">{props.description}</p>
+        <p className="text-sm text-black pt-2">{props.description}</p>
       </div>
     </div>
   );
