@@ -1,5 +1,5 @@
 // 'use client';
-import React from 'react';
+import React, { use } from 'react';
 import { Product } from '../../../typings';
 import Image from 'next/image';
 import img from '../../../assets/img/wings-default.jpg';
@@ -21,7 +21,7 @@ async function getProduct(productId: string) {
   return item;
 }
 
-const ProductPage = async ({ params: { productId } }: PageProps) => {
+const ProductPage = ({ params: { productId } }: PageProps) => {
   // const [sauce, setSauces] = useState(0);
 
   // const handleChange = (e: any, option: any) => {
@@ -30,29 +30,25 @@ const ProductPage = async ({ params: { productId } }: PageProps) => {
   //   if (checked) {
   //   }
   // };
-  const product = await getProduct(productId);
-  console.log(product);
+
+  // Database variable
+  const product = use(getProduct(productId));
   return (
-    <div className="flex-1 h-screen w-screen bg-[#f8dcc9]">
-      <Image className="w-36 h-36 rounded-full" alt="wing-combo" src={img} />
-      <h3 className="text-black">{product.title}</h3>
+    <div className="h-full w-full bg-[#f8dcc9]">
+      <Image className="w-24 h-24" alt="wing-combo" src={img} />
+      <h3 className="text-2xl text-black">{product.title}</h3>
       <span className="">{product.prices[0]}</span>
-      <p className="w-[60%] text-lg text-black">{product.description}</p>
+      <p className="">{product.description}</p>
       <div>
-        <h3 className="text-2xl font-bold text-orange-500">
+        <h3 className="">
           Choose your flavor ({`${product.flavors[0].limit}`})
         </h3>
         {product.flavors.map((items: any, index: number) => (
           <div className="" key={index}>
             {items.text.map((flavor: string, index: number) => (
               <div key={index} className="">
-                <input
-                  className="w-4 h-4 shadow rounded-sm"
-                  type="checkbox"
-                  id={flavor}
-                  name={flavor}
-                />
-                <span key={index} className="text-lg text-black pl-2">
+                <input className="" type="checkbox" id={flavor} name={flavor} />
+                <span key={index} className="">
                   {flavor}
                 </span>
               </div>
@@ -61,20 +57,18 @@ const ProductPage = async ({ params: { productId } }: PageProps) => {
         ))}
       </div>
       <div>
-        <h3 className="text-xl font-bold text-orange-500">Add-ons</h3>
+        <h3 className="">Add-ons</h3>
         {product.extraOptions.map((option: any, index: number) => (
-          <div key={index} className="flex flex-row">
+          <div key={index} className="">
             <input
-              className="w-4 h-4 shadow rounded-sm"
+              className=""
               type="checkbox"
               id={option.text}
               name={option.text}
               // onChange={(e) => handleChange(e, option)}
             />
-            <label className="pr-2 text-lg text-black">{option.text}</label>
-            <label className="text-lg text-black">
-              {`($${option.price.toFixed(2)})`}
-            </label>
+            <label className="">{option.text}</label>
+            <label className="">{`($${option.price.toFixed(2)})`}</label>
           </div>
         ))}
       </div>
