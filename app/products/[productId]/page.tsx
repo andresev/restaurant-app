@@ -1,5 +1,5 @@
-// 'use client';
-import React, { use } from 'react';
+'use client';
+import React, { use, useState } from 'react';
 import { Product } from '../../../typings';
 import Image from 'next/image';
 import img from '../../../assets/img/wings-default.jpg';
@@ -22,17 +22,34 @@ async function getProduct(productId: string) {
 }
 
 const ProductPage = ({ params: { productId } }: PageProps) => {
-  // const [sauce, setSauces] = useState(0);
-
-  // const handleChange = (e: any, option: any) => {
-  //   const checked = e.target.checked;
-
-  //   if (checked) {
-  //   }
-  // };
-
   // Database variable
   const product = use(getProduct(productId));
+
+  const [addOns, setAddOns] = useState(0);
+  const [chosenAmount, setChosenAmount] = useState(0);
+  const [selectedFlavors, setSelectedFlavors] = useState<string[]>([]);
+
+  const handleLimit = (e: any, flavor: string) => {
+    const checked = e.target.checked;
+    console.log(checked);
+    if (checked) {
+      setChosenAmount((prevAmount) => prevAmount + 1);
+      setSelectedFlavors([...selectedFlavors, flavor]);
+    }
+
+    if (!checked) {
+      setChosenAmount((prev) => prev - 1);
+    }
+    console.log(chosenAmount);
+  };
+
+  const handleChange = (e: any, option: any) => {
+    const checked = e.target.checked;
+
+    if (checked) {
+    }
+  };
+
   return (
     <div className="flex flex-col items-center p-10 h-full w-full bg-[#f8dcc9]">
       <Image className="w-40 h-40 rounded-full" alt="wing-combo" src={img} />
@@ -48,12 +65,13 @@ const ProductPage = ({ params: { productId } }: PageProps) => {
         {product.flavors.map((items: any, index: number) => (
           <div className="" key={index}>
             {items.text.map((flavor: string, index: number) => (
-              <div key={index} className="py-0.5">
+              <div key={index} className="py-1">
                 <input
-                  className="w-6 h-6 shadow rounded-md"
+                  className="w-6 h-6 rounded-sm"
                   type="checkbox"
                   id={flavor}
                   name={flavor}
+                  onChange={(e) => handleLimit(e, flavor)}
                 />
                 <span key={index} className="text-lg text-black pl-2">
                   {flavor}
@@ -72,7 +90,7 @@ const ProductPage = ({ params: { productId } }: PageProps) => {
               type="checkbox"
               id={option.text}
               name={option.text}
-              // onChange={(e) => handleChange(e, option)}
+              onChange={(e) => handleChange(e, option)}
             />
             <label className="pl-2 text-lg text-black">{option.text}</label>
             <label className="pl-2 text-lg text-black">
